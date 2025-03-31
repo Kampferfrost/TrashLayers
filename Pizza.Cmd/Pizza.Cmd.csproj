@@ -7,4 +7,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Pizza.Access.Persistence\Pizza.Access.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Pizza.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
