@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pizza.Domain.Entities;
-using System.Collections.Generic;
 
 namespace Pizza.Access.Persistence.Repositories
 {
