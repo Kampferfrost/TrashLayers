@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pizza.Access.Persistence\Pizza.Access.Persistence.csproj" />
+    <ProjectReference Include="..\Pizza.Access.Persistence\NendoPizza.Access.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

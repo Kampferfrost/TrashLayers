@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pizza.Domain\Pizza.Domain.csproj" />
+    <ProjectReference Include="..\Pizza.Domain\NendoPizza.Domain.csproj" />
   </ItemGroup>
 
 </Project>

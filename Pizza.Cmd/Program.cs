@@ -1,8 +1,8 @@
-﻿using Pizza.Access.Persistence.Repositories;
-using Pizza.Domain.Entities;
+﻿using NendoPizza.Access.Persistence.Repositories;
+using NendoPizza.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Pizza.Cmd
+namespace NendoPizza.Cmd
 {
     internal class Program
     {
@@ -12,9 +12,9 @@ namespace Pizza.Cmd
             services.AddScoped<PizzaDbContext>();
             var serviceProvider = services.BuildServiceProvider();
 
-            PizzaEntity classicItalian = new PizzaEntity() { Name = "Classic Italian" };
-            PizzaEntity veggie = new PizzaEntity() { Name = "Veggie" };
-            PizzaEntity skoofoniy = new PizzaEntity() { Name = "Пицца От скуффа" };
+            Pizza classicItalian = new Pizza() { Name = "Classic Italian" };
+            Pizza veggie = new Pizza() { Name = "Veggie" };
+            Pizza skoofoniy = new Pizza() { Name = "Пицца От скуффа" };
 
             using (var scope = serviceProvider?.CreateScope())
             {

@@ -1,4 +1,4 @@
-﻿namespace AppCore.Pizza.Services
+﻿namespace AppCore.NendoPizza.Services
 {
     internal class PizzaServices
     {

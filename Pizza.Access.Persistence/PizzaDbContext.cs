@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Pizza.Domain.Entities;
+using NendoPizza.Domain.Entities;
 
-namespace Pizza.Access.Persistence.Repositories
+namespace NendoPizza.Access.Persistence.Repositories
 {
     public class PizzaDbContext : DbContext
     {
-        public DbSet<PizzaEntity> Pizzas { get; set; }
+        public DbSet<Pizza> Pizzas { get; set; }
         public PizzaDbContext()
         {
             Database.EnsureCreated();

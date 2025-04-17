@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{43523E83-639A-4FED-BCBF-2A66D4169265}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizza.Cmd", "Pizza.Cmd\Pizza.Cmd.csproj", "{2863C9FF-96C8-45D7-A174-2F58B9C5993C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NendoPizza.Cmd", "Pizza.Cmd\NendoPizza.Cmd.csproj", "{2863C9FF-96C8-45D7-A174-2F58B9C5993C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizza.Domain", "Pizza.Domain\Pizza.Domain.csproj", "{DAB98AD5-DCB6-48CE-9281-6E29CB990A39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NendoPizza.Domain", "Pizza.Domain\NendoPizza.Domain.csproj", "{DAB98AD5-DCB6-48CE-9281-6E29CB990A39}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{A6677C40-FBC9-4D49-9EFE-1F65762C075C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizza.Access.Persistence", "Pizza.Access.Persistence\Pizza.Access.Persistence.csproj", "{3A9C9A5A-11B2-4C60-B61B-415ED9F4A808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NendoPizza.Access.Persistence", "Pizza.Access.Persistence\NendoPizza.Access.Persistence.csproj", "{3A9C9A5A-11B2-4C60-B61B-415ED9F4A808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCore.Pizza", "AppCore.Pizza\AppCore.Pizza.csproj", "{0C89F4A5-CA89-4BAD-B41C-5F68317668F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppCore.NendoPizza", "AppCore.Pizza\AppCore.NendoPizza.csproj", "{0C89F4A5-CA89-4BAD-B41C-5F68317668F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

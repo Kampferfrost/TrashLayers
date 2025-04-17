@@ -1,6 +1,6 @@
-﻿namespace Pizza.Domain.Entities
+﻿namespace NendoPizza.Domain.Entities
 {
-    public class PizzaEntity
+    public class Pizza
     {
         public int Id { get; set; }
         public string? Name { get; set; }
