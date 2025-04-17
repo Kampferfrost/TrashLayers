@@ -1,5 +1,6 @@
 ﻿using Pizza.Access.Persistence.Repositories;
 using Pizza.Domain.Entities;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Pizza.Cmd
 {
@@ -7,20 +8,28 @@ namespace Pizza.Cmd
     {
         static void Main(string[] args)
         {
-            using (PizzaDbContext GetContextPizza = new PizzaDbContext())
-            {
-                PizzaEntity classicItalian = new PizzaEntity() { Name = "Classic Italian" };
-                PizzaEntity veggie = new PizzaEntity() { Name = "Veggie" };
-                PizzaEntity skoofoniy = new PizzaEntity() { Name = "Пицца От скуффа" };
+            IServiceCollection services = new ServiceCollection();
+            services.AddScoped<PizzaDbContext>();
+            var serviceProvider = services.BuildServiceProvider();
 
-                GetContextPizza.Pizzas.Add(classicItalian);
-                GetContextPizza.Pizzas.Add(veggie);
-                GetContextPizza.Pizzas.Add(skoofoniy);
-                GetContextPizza.SaveChanges();
+            PizzaEntity classicItalian = new PizzaEntity() { Name = "Classic Italian" };
+            PizzaEntity veggie = new PizzaEntity() { Name = "Veggie" };
+            PizzaEntity skoofoniy = new PizzaEntity() { Name = "Пицца От скуффа" };
+
+            using (var scope = serviceProvider?.CreateScope())
+            {
+                var pizzaDbContext = scope.ServiceProvider?.GetService<PizzaDbContext>();
+                
+                
+
+                pizzaDbContext.Pizzas.Add(classicItalian);
+                pizzaDbContext.Pizzas.Add(veggie);
+                pizzaDbContext.Pizzas.Add(skoofoniy);
+                pizzaDbContext.SaveChanges();
 
                 Console.WriteLine("Объекты успешно сохранены");
 
-                var pizzas = GetContextPizza.Pizzas.ToList();
+                var pizzas = pizzaDbContext.Pizzas.ToList();
                 Console.WriteLine("Список:");
                 foreach (var pizza in pizzas)
                 {
