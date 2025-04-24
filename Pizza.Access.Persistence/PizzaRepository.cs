@@ -8,30 +8,49 @@ namespace NendoPizza.Access.Persistence
     // потом нормально вынесу 
     public class PizzaRepository : IPizzaRepository
     {
-        private PizzaDbContext pizzaDbContext = new PizzaDbContext();
+        private PizzaDbContext GetContext = new PizzaDbContext();
 
         public int Create(Pizza pizza)
         {
-            using var context = pizzaDbContext;
+            using var context = GetContext;
             context.Pizzas.Add(pizza);
             var count = context.SaveChanges();
             return 1;
         }
 
-        public Pizza GetPizza(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Pizza> GetPizzas()
         {
-            using var context = pizzaDbContext;
+            using var context = GetContext;
             return context.Pizzas.ToList();
         }
 
+        public Pizza? GetPizza(int id)
+        {
+            using var contex = GetContext;
+            return contex.Pizzas.Find(id);
+
+        }
         public int Update(Pizza pizza)
         {
-            throw new NotImplementedException();
+            using var context = GetContext;
+            context.Update(pizza);
+            var count = context.SaveChanges();
+            return count;
         }
+
+        public int DeletePizza(int id)
+        {
+            using var context = GetContext;
+            var pizza = context.Pizzas.Find(id);
+            var count = 0;
+            if (pizza != null)
+            {
+                context.Pizzas.Remove(pizza);
+                count = context.SaveChanges();
+            }
+            return count;
+        }
+
+
     }
 }
