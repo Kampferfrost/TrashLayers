@@ -1,6 +1,8 @@
 ﻿using NendoPizza.Access.Persistence.Repositories;
 using NendoPizza.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
+using NendoPizza.Domain.Interfaces;
+using NendoPizza.Access.Persistence;
 
 namespace NendoPizza.Cmd
 {
@@ -10,24 +12,30 @@ namespace NendoPizza.Cmd
         {
             IServiceCollection services = new ServiceCollection();
             services.AddScoped<PizzaDbContext>();
+            services.AddSingleton<IPizzaRepository, PizzaRepository>();
             var serviceProvider = services.BuildServiceProvider();
 
-            Pizza classicItalian = new Pizza() { Name = "Classic Italian" };
-            Pizza veggie = new Pizza() { Name = "Veggie" };
-            Pizza skoofoniy = new Pizza() { Name = "Пицца От скуффа" };
+            var pizzaRepository = serviceProvider?.GetService<IPizzaRepository>();
+
+            Console.WriteLine("Вывод с репозитории");
+            Console.WriteLine();
+
+            var nendoPizzas = pizzaRepository?.GetPizzas();
+            foreach (var pizza in nendoPizzas)
+            {
+                Console.WriteLine(pizza.Name);
+                Console.WriteLine("***");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Конец работы с репозиторием");
+            Console.WriteLine(); 
+            Console.WriteLine();
 
             using (var scope = serviceProvider?.CreateScope())
             {
                 var pizzaDbContext = scope.ServiceProvider?.GetService<PizzaDbContext>();
                 
                 
-
-                pizzaDbContext.Pizzas.Add(classicItalian);
-                pizzaDbContext.Pizzas.Add(veggie);
-                pizzaDbContext.Pizzas.Add(skoofoniy);
-                pizzaDbContext.SaveChanges();
-
-                Console.WriteLine("Объекты успешно сохранены");
 
                 var pizzas = pizzaDbContext.Pizzas.ToList();
                 Console.WriteLine("Список:");
