@@ -1,5 +1,4 @@
 ﻿using NendoPizza.Access.Persistence.Repositories;
-using NendoPizza.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using NendoPizza.Domain.Interfaces;
 using NendoPizza.Access.Persistence;
@@ -16,10 +15,14 @@ namespace NendoPizza.Cmd
             var serviceProvider = services.BuildServiceProvider();
 
             var pizzaRepository = serviceProvider?.GetService<IPizzaRepository>();
+            GetPizzas(pizzaRepository);
 
-            Console.WriteLine("Вывод с репозитории");
-            Console.WriteLine();
 
+        }
+
+        private static void GetPizzas(IPizzaRepository? pizzaRepository)
+        {
+            Console.WriteLine("_______________________________________________");
             var nendoPizzas = pizzaRepository?.GetPizzas();
             foreach (var pizza in nendoPizzas)
             {
@@ -27,25 +30,8 @@ namespace NendoPizza.Cmd
                 Console.WriteLine("***");
             }
             Console.WriteLine();
-            Console.WriteLine("Конец работы с репозиторием");
-            Console.WriteLine(); 
+            Console.WriteLine("_______________________________________________");
             Console.WriteLine();
-
-            using (var scope = serviceProvider?.CreateScope())
-            {
-                var pizzaDbContext = scope.ServiceProvider?.GetService<PizzaDbContext>();
-                
-                
-
-                var pizzas = pizzaDbContext.Pizzas.ToList();
-                Console.WriteLine("Список:");
-                foreach (var pizza in pizzas)
-                {
-                    Console.WriteLine($"{pizza.Name}");
-                    Console.WriteLine("_____________");
-                }
-
-            }
         }
     }
 }

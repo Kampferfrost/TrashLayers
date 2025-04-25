@@ -19,7 +19,7 @@ namespace NendoPizza.Access.Persistence
             using var context = _context;
             context.Pizzas.Add(pizza);
             var count = context.SaveChanges();
-            return 1;
+            return count;
         }
 
         public List<Pizza> GetPizzas()
