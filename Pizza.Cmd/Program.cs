@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using NendoPizza.Domain.Interfaces;
 using NendoPizza.Access.Persistence;
+using NendoPizza.Domain.Entities;
 
 namespace NendoPizza.Cmd
 {
@@ -11,11 +12,13 @@ namespace NendoPizza.Cmd
         {
             IServiceCollection services = new ServiceCollection();
             services.AddScoped<PizzaDbContext>();
-            services.AddSingleton<IPizzaRepository, PizzaRepository>();
+            services.AddScoped<IPizzaRepository, PizzaRepository>();
             var serviceProvider = services.BuildServiceProvider();
 
             var pizzaRepository = serviceProvider?.GetService<IPizzaRepository>();
             GetPizzas(pizzaRepository);
+
+            //pizzaRepository.Create(new Pizza() { Id = 3, Name = "Trololo lie trodo" });
 
 
         }
@@ -23,8 +26,8 @@ namespace NendoPizza.Cmd
         private static void GetPizzas(IPizzaRepository? pizzaRepository)
         {
             Console.WriteLine("_______________________________________________");
-            var nendoPizzas = pizzaRepository?.GetPizzas();
-            foreach (var pizza in nendoPizzas)
+            var listNendoPizzas = pizzaRepository?.GetPizzas();
+            foreach (var pizza in listNendoPizzas)
             {
                 Console.WriteLine(pizza.Name);
                 Console.WriteLine("***");

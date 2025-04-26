@@ -8,49 +8,44 @@ namespace NendoPizza.Access.Persistence
     {
         private readonly PizzaDbContext _context;
 
-        public PizzaRepository()
+        public PizzaRepository(PizzaDbContext context)
         {
-            _context = new PizzaDbContext();
+            _context = context;
         }
         
 
         public int Create(Pizza pizza)
         {
-            using var context = _context;
-            context.Pizzas.Add(pizza);
-            var count = context.SaveChanges();
+            _context.Pizzas.Add(pizza);
+            var count = _context.SaveChanges();
             return count;
         }
 
         public List<Pizza> GetPizzas()
         {
-            using var context = _context;
-            return context.Pizzas.ToList();
+            return _context.Pizzas.ToList();
         }
 
         public Pizza? GetPizza(int id)
         {
-            using var contex = _context;
-            return contex.Pizzas.Find(id);
+            return _context.Pizzas.Find(id);
 
         }
         public int Update(Pizza pizza)
         {
-            using var context = _context;
-            context.Update(pizza);
-            var count = context.SaveChanges();
+            _context.Update(pizza);
+            var count = _context.SaveChanges();
             return count;
         }
 
         public int DeletePizza(int id)
         {
-            using var context = _context;
-            var pizza = context.Pizzas.Find(id);
+            var pizza = _context.Pizzas.Find(id);
             var count = 0;
             if (pizza != null)
             {
-                context.Pizzas.Remove(pizza);
-                count = context.SaveChanges();
+                _context.Pizzas.Remove(pizza);
+                count = _context.SaveChanges();
             }
             return count;
         }
