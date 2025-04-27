@@ -18,9 +18,9 @@ namespace NendoPizza.Cmd
             var pizzaRepository = serviceProvider?.GetService<IPizzaRepository>();
             GetPizzas(pizzaRepository);
 
-            //pizzaRepository.Create(new Pizza() { Id = 3, Name = "Trololo lie trodo" });
+            pizzaRepository.Create(new Pizza() {Name = "Trololo lie trodo" });
 
-
+            GetPizzas(pizzaRepository);
         }
 
         private static void GetPizzas(IPizzaRepository? pizzaRepository)
