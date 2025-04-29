@@ -11,6 +11,7 @@ namespace NendoPizza.Domain.Interfaces
         public int Create(Pizza pizza);
 
         public int Update(Pizza pizza);
+        public int DeletePizza(int id);
     }
 
 }
