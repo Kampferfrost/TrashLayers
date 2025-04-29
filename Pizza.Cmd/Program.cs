@@ -8,6 +8,7 @@ namespace NendoPizza.Cmd
 {
     internal class Program
     {
+
         static void Main(string[] args)
         {
             IServiceCollection services = new ServiceCollection();
@@ -16,6 +17,7 @@ namespace NendoPizza.Cmd
             var serviceProvider = services.BuildServiceProvider();
             var pizzaRepository = serviceProvider?.GetService<IPizzaRepository>();
 
+            UddatePizza(pizzaRepository);
             GetPizzas(pizzaRepository);
             AddPizza(pizzaRepository);
             GetPizzaById(pizzaRepository);
@@ -23,21 +25,28 @@ namespace NendoPizza.Cmd
             DeletePizzaById(pizzaRepository);
         }
 
+        private static void UddatePizza(IPizzaRepository? pizzaRepository)
+        {
+            var pizza = GetPizzaById(pizzaRepository);
+            pizza.Name = "Monkey Pizza";
+            pizzaRepository.Update(pizza);
+        }
+
         private static void DeletePizzaById(IPizzaRepository? pizzaRepository)
         {
-            if(pizzaRepository.DeletePizza(1) >= 1)
+            if(pizzaRepository.DeletePizza(1) is 0)
             {
-                Console.WriteLine("Запись удалина");
+                Console.WriteLine("Запись НЕ удалина");
             }
             else
             {
-                Console.WriteLine("Запись НЕ удалина");
+                Console.WriteLine("Запись удалина");
             }
 
             GetPizzas(pizzaRepository);
         }
 
-        private static void GetPizzaById(IPizzaRepository? pizzaRepository)
+        private static Pizza GetPizzaById(IPizzaRepository? pizzaRepository)
         {
             Console.WriteLine();
             Console.WriteLine("***Поиск пиццы по ИД***");
@@ -47,6 +56,7 @@ namespace NendoPizza.Cmd
             Console.WriteLine($"Name: {foundPizza.Name}, Id:{foundPizza.Id}");
             Console.WriteLine();
             Console.WriteLine("___Конце поиска пиццы по ИД______");
+            return foundPizza;
         }
 
         private static void AddPizza(IPizzaRepository? pizzaRepository)
