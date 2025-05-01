@@ -1,5 +1,6 @@
 
 using NendoPizza.Access.Persistence;
+using NendoPizza.Access.Persistence.Repositories;
 using NendoPizza.Domain.Interfaces;
 
 namespace NendoPizza.WebApi
@@ -14,6 +15,7 @@ namespace NendoPizza.WebApi
 
 
             builder.Services.AddScoped<IPizzaRepository, PizzaRepository>();
+            builder.Services.AddScoped<PizzaDbContext>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
