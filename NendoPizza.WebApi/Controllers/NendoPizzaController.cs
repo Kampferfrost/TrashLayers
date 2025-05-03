@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using NendoPizza.Access.Persistence;
 using NendoPizza.Domain.Entities;
 using NendoPizza.Domain.Interfaces;
 
@@ -15,11 +14,10 @@ namespace NendoPizza.WebApi.Controllers
             _pizzaRepository = pizzaRepository;
         }
 
-        [HttpGet(Name = "GetPizza")]
-        public ActionResult Get() // как я полагаю тут нужно указать явно
+        [HttpGet(Name = "GetPizzas")]
+        public ActionResult Get()
         {
-            var pizza = _pizzaRepository.GetPizza(1);
-            
+            var pizza = _pizzaRepository?.GetPizzas();
             return Ok(pizza);
         }
     }

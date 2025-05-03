@@ -12,6 +12,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pizza.Access.Persistence\NendoPizza.Access.Persistence.csproj" />
+    <ProjectReference Include="..\Pizza.Domain\NendoPizza.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Pizza.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
