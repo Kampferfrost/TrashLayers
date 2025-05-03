@@ -21,7 +21,7 @@ namespace NendoPizza.Access.Persistence
             return count;
         }
 
-        public List<Pizza> GetPizzas()
+        public async Task<List<Pizza>> GetPizzas()
         {
             return _context.Pizzas.ToList();
         }

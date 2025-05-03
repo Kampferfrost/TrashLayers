@@ -18,10 +18,10 @@ namespace NendoPizza.Cmd
             var pizzaRepository = serviceProvider?.GetService<IPizzaRepository>();
 
             UddatePizza(pizzaRepository);
-            GetPizzas(pizzaRepository);
+            GetPizzasAsync(pizzaRepository);
             AddPizza(pizzaRepository);
             GetPizzaById(pizzaRepository);
-            GetPizzas(pizzaRepository);
+            GetPizzasAsync(pizzaRepository);
             DeletePizzaById(pizzaRepository);
         }
 
@@ -43,7 +43,7 @@ namespace NendoPizza.Cmd
                 Console.WriteLine("Запись удалина");
             }
 
-            GetPizzas(pizzaRepository);
+            GetPizzasAsync(pizzaRepository);
         }
 
         private static Pizza GetPizzaById(IPizzaRepository? pizzaRepository)
@@ -64,12 +64,12 @@ namespace NendoPizza.Cmd
             pizzaRepository.Create(new Pizza() { Name = "Trololo lie trodo" });
         }
 
-        private static void GetPizzas(IPizzaRepository? pizzaRepository)
+        private static async Task GetPizzasAsync(IPizzaRepository? pizzaRepository)
         {
             Console.WriteLine();
             Console.WriteLine("***Вывод всех пицц***");
             Console.WriteLine();
-            var listNendoPizzas = pizzaRepository?.GetPizzas();
+            var listNendoPizzas = await pizzaRepository?.GetPizzas();
             foreach (var pizza in listNendoPizzas)
             {
                 Console.WriteLine(pizza.Name);

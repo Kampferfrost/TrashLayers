@@ -14,11 +14,18 @@ namespace NendoPizza.WebApi.Controllers
             _pizzaRepository = pizzaRepository;
         }
 
+        //[HttpGet(Name = "GetPizzas")]
+        //public ActionResult Get()
+        //{
+        //    var pizza = _pizzaRepository?.GetPizzas();
+        //    return Ok(pizza);
+        //}
+
         [HttpGet(Name = "GetPizzas")]
-        public ActionResult Get()
+        public async Task<List<Pizza>> GetPizzas()
         {
-            var pizza = _pizzaRepository?.GetPizzas();
-            return Ok(pizza);
+            var pizza = await _pizzaRepository?.GetPizzas();
+            return pizza;
         }
     }
 

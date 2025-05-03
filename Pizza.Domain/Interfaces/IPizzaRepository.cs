@@ -4,7 +4,7 @@ namespace NendoPizza.Domain.Interfaces
 {
     public interface IPizzaRepository
     {
-        public List<Pizza> GetPizzas();
+        public Task<List<Pizza>> GetPizzas();
 
         public Pizza GetPizza(int id);
 
