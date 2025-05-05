@@ -16,9 +16,12 @@ namespace NendoPizza.Access.Persistence
 
         public int Create(Pizza pizza)
         {
+            pizza.Id = _context.Pizzas.Count() + 1; // присваевает id, однако легче присвоить просто 0
             _context.Pizzas.Add(pizza);
+            
             var count = _context.SaveChanges();
             return count;
+
         }
 
         public async Task<List<Pizza>> GetPizzas()
@@ -29,7 +32,6 @@ namespace NendoPizza.Access.Persistence
         public Pizza? GetPizza(int id)
         {
             return _context.Pizzas.Find(id);
-
         }
         public int Update(Pizza pizza)
         {
