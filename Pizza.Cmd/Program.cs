@@ -61,7 +61,7 @@ namespace NendoPizza.Cmd
 
         private static void AddPizza(IPizzaRepository? pizzaRepository)
         {
-            pizzaRepository.Create(new Pizza() { Name = "Trololo lie trodo" });
+            pizzaRepository.CreatePizza(new Pizza() { Name = "Trololo lie trodo" });
         }
 
         private static async Task GetPizzasAsync(IPizzaRepository? pizzaRepository)

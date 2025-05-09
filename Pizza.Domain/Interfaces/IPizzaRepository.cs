@@ -8,7 +8,7 @@ namespace NendoPizza.Domain.Interfaces
 
         public Pizza GetPizza(int id);
 
-        public int Create(Pizza pizza);
+        public int CreatePizza(Pizza pizza);
 
         public int Update(Pizza pizza);
         public int DeletePizza(int id);

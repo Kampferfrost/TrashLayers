@@ -14,9 +14,9 @@ namespace NendoPizza.Access.Persistence
         }
         
 
-        public int Create(Pizza pizza)
+        public int CreatePizza(Pizza pizza)
         {
-            pizza.Id = _context.Pizzas.Count() + 1; // присваевает id, однако легче присвоить просто 0
+            pizza.Id = _context.Pizzas.Count() + 1; 
             _context.Pizzas.Add(pizza);
             
             var count = _context.SaveChanges();

@@ -12,7 +12,7 @@ namespace NendoPizza.Access.Persistence.Repositories
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Pizza.db");
+            optionsBuilder.UseSqlite("Data Source=../Shared/Pizza.db"); //не прокатило
         }
 
     }

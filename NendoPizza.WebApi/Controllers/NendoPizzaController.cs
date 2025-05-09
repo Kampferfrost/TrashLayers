@@ -31,7 +31,7 @@ namespace NendoPizza.WebApi.Controllers
         [HttpPost(Name = "PostPizza")]
         public int CreatePizza(Pizza pizza)
         {
-            var pizzaCheck = _pizzaRepository?.Create(pizza);
+            var pizzaCheck = _pizzaRepository?.CreatePizza(pizza);
             //return pizza.Name ?? "No pizza";
             return pizzaCheck ?? 5;
 
